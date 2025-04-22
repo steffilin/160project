@@ -1,4 +1,13 @@
 /* src/styles/main.css */
+/* html, body {
+  height: 100%;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+} */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -16,10 +25,11 @@ body {
   }
   
   input, select, textarea {
-    width: 100%;
+    width: 93%;
     margin-bottom: 15px;
     padding: 10px;
     font-size: 16px;
+    box-sizing: border-box;
   }
   
   button {
@@ -36,4 +46,6 @@ body {
   button:hover {
     background-color: #0051cc;
   }
-  
+  form button {
+    width: 100%;
+}
