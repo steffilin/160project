@@ -1,6 +1,7 @@
 // src/pages/ProfilePage.js
 import React, { useState } from 'react';
 import '../styles/main.css';
+import { useNavigate } from 'react-router-dom';
 
 function ProfilePage() {
   const [profile, setProfile] = useState({
@@ -50,11 +51,13 @@ function ProfilePage() {
       };
     });
   };
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Profile data:', profile);
-    // TODO: Send to backend later
+    navigate('/landing');
+
   };
 
   return (

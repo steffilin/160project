@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/main.css';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
   const [form, setForm] = useState({
@@ -14,11 +15,13 @@ function LoginPage() {
       [e.target.name]: e.target.value
     });
   };
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Login info:', form);
-    // TODO
+    navigate('/landing');
+
   };
 
   return (

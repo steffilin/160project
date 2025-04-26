@@ -29,7 +29,7 @@ function RegisterPage() {
     }
 
     console.log('Register info:', form);
-    // TODO: Connect to backend registration API later
+    
     navigate('/profile');
   };
 
