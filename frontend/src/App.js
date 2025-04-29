@@ -1,8 +1,18 @@
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
+import MatchingFriends from './pages/MatchingFriends';
+
+const dummyUserInfo = {
+  Personality: 'social',
+  runningspeed: '8:30 min/mile',
+  avaiable_time_shot: 'Tuesday 7–9am',
+  Location: 'UC Berkeley campus',
+};
 
 function App() {
   return (
@@ -11,6 +21,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/match" element={<MatchingFriends currentUserInfo={dummyUserInfo} />} />
       </Routes>
     </Router>
   );

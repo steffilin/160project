@@ -1,0 +1,83 @@
+.matching-friends-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .match-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .match-button:hover {
+    background-color: #218838;
+  }
+  
+  .friend-card {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f0f8ff;
+    text-align: left;
+  }
+  
+  .friend-info {
+    flex: 1;
+  }
+  
+  .friend-info h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #007bff;
+  }
+  
+  .friend-info p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #333;
+    white-space: pre-wrap;
+  }
+  
+  /* Toast notification styling */
+  .toast-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    animation: slideIn 0.3s ease, fadeOut 0.3s ease 3s forwards;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+  }
+  
