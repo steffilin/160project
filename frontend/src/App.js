@@ -7,6 +7,12 @@ import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import MatchingFriends from './pages/MatchingFriends';
 
+import LandingLayout from './pages/LandingLayout';
+import LandingHome from './pages/LandingHome';
+import FindRunnersPage from './pages/FindRunnersPage';
+import FriendsPage from './pages/FriendsPage';
+import CreateRunPage from './pages/CreateRunPage';
+
 const dummyUserInfo = {
   Personality: 'social',
   runningspeed: '8:30 min/mile',
@@ -22,6 +28,13 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/match" element={<MatchingFriends currentUserInfo={dummyUserInfo} />} />
+
+        <Route path="/landing" element={<LandingLayout />}>
+          <Route index element={<LandingHome />} />
+          <Route path="find-runners" element={<FindRunnersPage />} />
+          <Route path="create-run" element={<CreateRunPage />} />
+          <Route path="friends" element={<FriendsPage />} />
+        </Route>
       </Routes>
     </Router>
   );
