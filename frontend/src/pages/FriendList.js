@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/FriendList.css';
+import { useNavigate } from 'react-router-dom';
 
 const exampleFriend = {
   name: "John Doe",
@@ -21,8 +22,10 @@ const exampleFriend = {
 }
 
 function FriendCard({ user }) {
+  const navigate = useNavigate();
   const handleClick = (event) => {
     console.log(user.name, "clicked");
+    navigate('/landing/chat');
     // TODO: redirect to chat with "user"
   }
 

@@ -12,6 +12,7 @@ import LandingHome from './pages/LandingHome';
 import FindRunnersPage from './pages/FindRunnersPage';
 import FriendsPage from './pages/FriendsPage';
 import CreateRunPage from './pages/CreateRunPage';
+import ChatUI from './pages/chatUI';
 
 const dummyUserInfo = {
   Personality: 'social',
@@ -34,6 +35,7 @@ function App() {
           <Route path="find-runners" element={<FindRunnersPage />} />
           <Route path="create-run" element={<CreateRunPage />} />
           <Route path="friends" element={<FriendsPage />} />
+          <Route path="chat" element={<ChatUI />} />
         </Route>
       </Routes>
     </Router>
