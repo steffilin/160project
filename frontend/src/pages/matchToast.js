@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import '../styles/notification.css';
+import '../styles/matchingFriends.css';
 
 function MatchToast({ message, onClose }) {
   useEffect(() => {

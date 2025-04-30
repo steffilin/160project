@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MatchToast from './pages/MatchToast';  
+import MatchToast from './matchToast';  
 import '../styles/matchingFriends.css'; 
 
 function MatchingFriends({ currentUserInfo, userList }) {
