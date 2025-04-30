@@ -1,0 +1,53 @@
+[
+    {
+      "id": 1,
+      "name": "Alex",
+      "distance": 2.3,
+      "preference": "long-distance",
+      "availability": [
+        { "day": "Monday", "start": "07:00", "end": "09:00" },
+        { "day": "Wednesday", "start": "18:00", "end": "20:00" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jamie",
+      "distance": 1.1,
+      "preference": "short-distance",
+      "availability": [
+        { "day": "Tuesday", "start": "08:30", "end": "10:00" },
+        { "day": "Thursday", "start": "17:00", "end": "18:30" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Taylor",
+      "distance": 3.6,
+      "preference": "training",
+      "availability": [
+        { "day": "Monday", "start": "06:00", "end": "07:30" },
+        { "day": "Friday", "start": "19:00", "end": "21:00" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Morgan",
+      "distance": 0.8,
+      "preference": "long-distance",
+      "availability": [
+        { "day": "Wednesday", "start": "06:30", "end": "08:30" },
+        { "day": "Sunday", "start": "09:00", "end": "10:30" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Sam",
+      "distance": 2.0,
+      "preference": "short-distance",
+      "availability": [
+        { "day": "Saturday", "start": "07:00", "end": "08:00" },
+        { "day": "Sunday", "start": "17:00", "end": "19:00" }
+      ]
+    }
+  ]
+  
