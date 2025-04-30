@@ -1,11 +1,18 @@
-// src/pages/FindRunnersPage.js
 import React from 'react';
+import MatchingFriends from './matchingFriends';
+
+const dummyUserInfo = {
+  Personality: 'social',
+  runningspeed: '8:30',
+  avaiable_time_shot: 'Tuesday 7–9am',
+  Location: 'UC Berkeley',
+};
 
 function FindRunnersPage() {
   return (
-    <div>
-      <h2>Find Runners</h2>
-      <p>run run run run </p>
+    <div className="find-runners-container">
+      
+      <MatchingFriends currentUserInfo={dummyUserInfo} />
     </div>
   );
 }

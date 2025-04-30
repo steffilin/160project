@@ -32,7 +32,7 @@ function LoginPage() {
       {/* Login Form */}
       <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
         <input
-          name="Email"
+          name="username"
           placeholder="Email"
           value={form.username}
           onChange={handleChange}
