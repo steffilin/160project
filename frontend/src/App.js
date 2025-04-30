@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
-import MatchingFriends from './pages/MatchingFriends';
+import MatchingFriends from './pages/matchingFriends';
 
 import LandingLayout from './pages/LandingLayout';
 import LandingHome from './pages/LandingHome';
