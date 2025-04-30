@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
+import HomePage from './pages/HomePage';
+import FindRunnerPage from './pages/FindRunnerPage';
 import MatchingFriends from './pages/matchingFriends';
 
 import LandingLayout from './pages/LandingLayout';
@@ -35,6 +37,8 @@ function App() {
           <Route path="create-run" element={<CreateRunPage />} />
           <Route path="friends" element={<FriendsPage />} />
         </Route>
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/find-runner" element={<FindRunnerPage />} />
       </Routes>
     </Router>
   );
