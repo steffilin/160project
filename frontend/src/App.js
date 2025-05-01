@@ -10,7 +10,7 @@ import MatchingFriends from './pages/matchingFriends';
 import LandingLayout from './pages/LandingLayout';
 import LandingHome from './pages/LandingHome';
 import FindRunnersPage from './pages/FindRunnersPage';
-import FriendsPage from './pages/FriendsPage';
+import { FriendsPage, FriendsLayout } from './pages/FriendsPage';
 import CreateRunPage from './pages/CreateRunPage';
 import ChatUI from './pages/chatUI';
 
@@ -34,8 +34,10 @@ function App() {
           <Route index element={<LandingHome />} />
           <Route path="find-runners" element={<FindRunnersPage />} />
           <Route path="create-run" element={<CreateRunPage />} />
-          <Route path="friends" element={<FriendsPage />} />
-          <Route path="chat" element={<ChatUI />} />
+          <Route path="friends" element={<FriendsLayout />} >
+            <Route path="" element={<FriendsPage />} />
+            <Route path="chat" element={<ChatUI />} />
+          </Route>
         </Route>
       </Routes>
     </Router>

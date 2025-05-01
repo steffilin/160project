@@ -24,9 +24,8 @@ const exampleFriend = {
 function FriendCard({ user }) {
   const navigate = useNavigate();
   const handleClick = (event) => {
-    console.log(user.name, "clicked");
-    navigate('/landing/chat');
-    // TODO: redirect to chat with "user"
+    console.log("Chat with", user.name, "opened.");
+    navigate('chat');
   }
 
   const card = (

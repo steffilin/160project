@@ -1,6 +1,6 @@
-
 import React from 'react';
 import FriendList from './FriendList';
+import { useNavigate, Outlet } from 'react-router-dom';
 
 const dummyFriendList = [
   {
@@ -68,4 +68,10 @@ function FriendsPage() {
   );
 }
 
-export default FriendsPage;
+function FriendsLayout() {
+  return (
+    <Outlet />
+  );
+}
+
+export { FriendsLayout, FriendsPage };
