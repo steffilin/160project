@@ -1,6 +1,9 @@
 
-import React, { createElement } from 'react';
-import React, { useState } from 'react';
+import React, { createElement, useState } from 'react';
+// import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 function CreateRunPage() {
   // const button = ("button");
@@ -9,12 +12,26 @@ function CreateRunPage() {
   const [location, setLocation] = useState('');
   const [time, setTime] = useState('');
 
+  const navigate = useNavigate();
+
+  
   const handleClick = () => {
     console.log('Select Runners button clicked!');
     // Add your logic here
     console.log('Event Name:', eventName);
     console.log('Location:', location);
     console.log('Time:', time);
+
+    
+
+     // Save values and go to next page
+     navigate('/summary', {
+      state: {
+        eventName,
+        location,
+        time,
+      },
+    });
 
   };
 
