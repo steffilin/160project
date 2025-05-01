@@ -25,7 +25,7 @@ function FriendCard({ user }) {
   const navigate = useNavigate();
   const handleClick = (event) => {
     console.log("Chat with", user.name, "opened.");
-    navigate('chat');
+    navigate('chat', { state: { user } });
   }
 
   const card = (
@@ -47,9 +47,9 @@ function FriendList({ friendList }) {
   return (
     <div className="friend-list-container">
       {
-        friendList.map((friend) => {
+        friendList.map((friend, index) => {
           return (
-            <FriendCard user={friend} />
+            <FriendCard key={index} user={friend} />
           )
         })
       }

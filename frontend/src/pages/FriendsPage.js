@@ -10,7 +10,7 @@ const dummyFriendList = [
     location: 'Berkeley',
     paceMinutes: 8,
     paceSeconds: 30,
-    runCount: 2,
+    runCount: 1,
     availability: {
       Monday: [],
       Tuesday: [],
@@ -26,9 +26,9 @@ const dummyFriendList = [
     gender: 'female',
     age: 22,
     location: 'Berkeley',
-    paceMinutes: 8,
+    paceMinutes: 9,
     paceSeconds: 30,
-    runCount: 2,
+    runCount: 10,
     availability: {
       Monday: [],
       Tuesday: [],
@@ -44,9 +44,9 @@ const dummyFriendList = [
     gender: 'male',
     age: 22,
     location: 'Berkeley',
-    paceMinutes: 8,
-    paceSeconds: 30,
-    runCount: 2,
+    paceMinutes: 9,
+    paceSeconds: 45,
+    runCount: 4,
     availability: {
       Monday: [],
       Tuesday: [],

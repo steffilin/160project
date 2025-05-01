@@ -12,7 +12,7 @@ import LandingHome from './pages/LandingHome';
 import FindRunnersPage from './pages/FindRunnersPage';
 import { FriendsPage, FriendsLayout } from './pages/FriendsPage';
 import CreateRunPage from './pages/CreateRunPage';
-import ChatUI from './pages/chatUI';
+import Chat from './pages/Chat';
 
 const dummyUserInfo = {
   Personality: 'social',
@@ -36,7 +36,7 @@ function App() {
           <Route path="create-run" element={<CreateRunPage />} />
           <Route path="friends" element={<FriendsLayout />} >
             <Route path="" element={<FriendsPage />} />
-            <Route path="chat" element={<ChatUI />} />
+            <Route path="chat" element={<Chat />} />
           </Route>
         </Route>
       </Routes>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import '../styles/chatUI.css'; 
+import '../styles/chat.css';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-function ChatUI() {
+function Chat() {
   const [messages, setMessages] = useState([
     { text: 'Hey! Ready to run tomorrow?', sender: 'friend' },
     { text: 'Yes! Let’s meet at 7am?', sender: 'me' }
@@ -13,19 +14,36 @@ function ChatUI() {
     setMessages([...messages, { text: input, sender: 'me' }]);
     setInput('');
   };
+  const location = useLocation();
+  const navigate = useNavigate();
+  const friend = location.state?.user;
+  if (!friend) {
+    return (
+      <p>No friend selected. Please return to your friends list.</p>
+    );
+  }
+
+  const handleExit = () => {
+    navigate("..");
+  }
 
   return (
     <div className="chat-container">
-      <div className="chat-header">Chat with Friend</div>
+      <div className="chat-header">
+        Chat with {friend.name}
+        <div className="exit-button" onClick={handleExit}>×</div>
+      </div>
       <div className="chat-messages">
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`chat-message ${msg.sender === 'me' ? 'message-sent' : 'message-received'}`}
-          >
-            {msg.text}
-          </div>
-        ))}
+        {
+          messages.map((msg, index) => (
+            <div
+              key={index}
+              className={`chat-message ${msg.sender === 'me' ? 'message-sent' : 'message-received'}`}
+            >
+              {msg.text}
+            </div>
+          ))
+        }
       </div>
       <div className="chat-input-container">
         <input
@@ -41,4 +59,4 @@ function ChatUI() {
   );
 }
 
-export default ChatUI;
+export default Chat;
