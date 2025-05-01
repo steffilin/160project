@@ -25,7 +25,7 @@ function LandingLayout() {
                     alt="Profile"
                     onClick={() => navigate('/profile')}
                 />
-                <h2>My RunLink</h2>
+                <h2>RunLink</h2>
             </div>
 
             {/* Landing Container (only for tabs and content) */}
