@@ -15,6 +15,7 @@ import LandingHome from './pages/LandingHome';
 import FindRunnersPage from './pages/FindRunnersPage';
 
 import CreateRunPage from './pages/CreateRunPage';
+import ChooseRunnersPage from './pages/ChooseRunnersPage';
 import Chat from './pages/Chat';
 
 const dummyUserInfo = {
@@ -64,6 +65,7 @@ function App() {
           <Route index element={<LandingHome />} />
           <Route path="find-runners" element={<FindRunnersPage />} />
           <Route path="create-run" element={<CreateRunPage />} />
+          <Route path="chooserunners" element={<ChooseRunnersPage />} />
           <Route path="friends" element={<FriendsLayout />} >
             <Route path="" element={<FriendsPage />} />
             <Route path="chat" element={<Chat />} />

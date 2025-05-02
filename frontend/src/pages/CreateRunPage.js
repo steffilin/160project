@@ -14,7 +14,7 @@ function CreateRunPage() {
 
   const navigate = useNavigate();
 
-  
+
   const handleClick = () => {
     console.log('Select Runners button clicked!');
     // Add your logic here
@@ -25,7 +25,7 @@ function CreateRunPage() {
     
 
      // Save values and go to next page
-     navigate('/summary', {
+     navigate('/landing/chooserunners', {
       state: {
         eventName,
         location,
