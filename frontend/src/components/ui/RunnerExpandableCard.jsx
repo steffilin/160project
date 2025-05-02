@@ -15,7 +15,7 @@ import {
 import useMeasure from "react-use-measure"
 import { cn } from "../../lib/utils"
 
-const springConfig = { stiffness: 200, damping: 20, bounce: 0.2 }
+const springConfig = { stiffness: 200, damping: 30, bounce: 0.1 }
 
 const ExpandableContext = createContext({
   isExpanded: false,
@@ -223,7 +223,7 @@ const ExpandableContent = React.forwardRef(({
 const ExpandableCard = React.forwardRef(({
   children,
   className = "",
-  collapsedSize = { width: 360, height: 160 },
+  collapsedSize = { width: "100%" },
   expandedSize = { width: 360, height: undefined },
   hoverToExpand = false,
   expandDelay = 0,
@@ -265,7 +265,7 @@ const ExpandableCard = React.forwardRef(({
       className={cn("cursor-pointer", className)}
       style={{
         width: expandDirection === "vertical" ? collapsedSize.width : smoothWidth,
-        height: expandDirection === "horizontal" ? collapsedSize.height : smoothHeight,
+        height: isExpanded ? smoothHeight : "auto",
       }}
       transition={springConfig}
       onHoverStart={handleHover}
@@ -309,7 +309,7 @@ ExpandableTrigger.displayName = "ExpandableTrigger"
 
 const ExpandableCardHeader = React.forwardRef(({ className, children, ...props }, ref) => (
   <div ref={ref} className={cn("flex flex-col space-y-1 p-3", className)} {...props}>
-    <motion.div layout className="flex justify-between items-start">
+    <motion.div layout className="w-full">
       {children}
     </motion.div>
   </div>
