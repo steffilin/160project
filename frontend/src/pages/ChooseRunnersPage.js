@@ -5,10 +5,11 @@ import { useLocation } from 'react-router-dom';
 import '../styles/FriendList.css';
 import { useNavigate } from 'react-router-dom';
 import { FaCommentDots } from 'react-icons/fa';
+import { useFriendList } from '../FriendContext';
 
 
   
-function FriendCard({ user }) {
+function FriendCard({ user, isSelected, onToggle }) {
     const navigate = useNavigate();
   
     const handleChatClick = (e) => {
@@ -18,6 +19,13 @@ function FriendCard({ user }) {
   
     return (
       <div className="friend-card">
+        <div className="checkbox">
+            <input
+            type="checkbox"
+            checked={isSelected}
+            onChange={() => onToggle(user.name)}
+            />
+        </div>
         <div className="friend-left">
           <div className="avatar-container">
             <div className={`status-dot ${user.online ? 'online' : 'offline'}`}></div>
@@ -39,15 +47,16 @@ function FriendCard({ user }) {
   }
 
   
-function ChooseRunnersPage({friendList}) {
+function ChooseRunnersPage() {
 
 
+    const dummyFriendList = useFriendList();
 
     return (
         <div className="friend-list-container">
-            {/* {friendList.map((friend, index) => (
+            {dummyFriendList.map((friend, index) => (
                 <FriendCard key={index} user={friend} />
-            ))} */}
+            ))}
         </div>
       );
 }
