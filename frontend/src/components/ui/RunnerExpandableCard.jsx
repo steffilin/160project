@@ -223,8 +223,8 @@ const ExpandableContent = React.forwardRef(({
 const ExpandableCard = React.forwardRef(({
   children,
   className = "",
-  collapsedSize = { width: 320, height: 211 },
-  expandedSize = { width: 480, height: undefined },
+  collapsedSize = { width: 360, height: 160 },
+  expandedSize = { width: 360, height: undefined },
   hoverToExpand = false,
   expandDelay = 0,
   collapseDelay = 0,
@@ -283,7 +283,7 @@ const ExpandableCard = React.forwardRef(({
         )}
       >
         <div className="grid grid-cols-1 rounded-lg sm:rounded-xl md:rounded-[2rem] p-1 sm:p-1.5 md:p-2 shadow-md shadow-black/5">
-          <div className="rounded-md sm:rounded-lg md:rounded-3xl bg-white p-2 sm:p-3 md:p-4 shadow-xl ring-1 ring-black/5">
+          <div className="rounded-md bg-white p-2 shadow-sm ring-1 ring-gray-300">
             <div className="w-full h-full overflow-hidden">
               <div ref={measureRef} className="flex flex-col h-full">
                 {children}
@@ -308,7 +308,7 @@ const ExpandableTrigger = React.forwardRef(({ children, ...props }, ref) => {
 ExpandableTrigger.displayName = "ExpandableTrigger"
 
 const ExpandableCardHeader = React.forwardRef(({ className, children, ...props }, ref) => (
-  <div ref={ref} className={cn("flex flex-col space-y-1.5 p-6", className)} {...props}>
+  <div ref={ref} className={cn("flex flex-col space-y-1 p-3", className)} {...props}>
     <motion.div layout className="flex justify-between items-start">
       {children}
     </motion.div>
@@ -317,14 +317,14 @@ const ExpandableCardHeader = React.forwardRef(({ className, children, ...props }
 ExpandableCardHeader.displayName = "ExpandableCardHeader"
 
 const ExpandableCardContent = React.forwardRef(({ className, children, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0 px-4 overflow-hidden flex-grow", className)} {...props}>
+  <div ref={ref} className={cn("p-3 pt-0 overflow-hidden flex-grow text-sm", className)} {...props}>
     <motion.div layout>{children}</motion.div>
   </div>
 ))
 ExpandableCardContent.displayName = "ExpandableCardContent"
 
 const ExpandableCardFooter = React.forwardRef(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex items-center p-4 pt-0", className)} {...props} />
+  <div ref={ref} className={cn("flex items-center p-3 pt-0", className)} {...props} />
 ))
 ExpandableCardFooter.displayName = "ExpandableCardFooter"
 

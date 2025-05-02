@@ -12,7 +12,7 @@ import LandingHome from './pages/LandingHome';
 import FindRunnersPage from './pages/FindRunnersPage';
 import FriendsPage from './pages/FriendsPage';
 import CreateRunPage from './pages/CreateRunPage';
-
+import SetFilterPage from './pages/SetFilterPage';
 
 function App() {
   return (
@@ -21,12 +21,14 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        
 
         <Route path="/landing" element={<LandingLayout />}>
           <Route index element={<LandingHome />} />
           <Route path="find-runners" element={<FindRunnersPage />} />
           <Route path="create-run" element={<CreateRunPage />} />
           <Route path="friends" element={<FriendsPage />} />
+          <Route path="set-filter" element={<SetFilterPage />} />
         </Route>
       </Routes>
     </Router>

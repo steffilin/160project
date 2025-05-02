@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import users from '../data/users.json';
-import FilterSidebar from '../components/FilterSidebar';
-import RunnerAvailability from '../components/RunnerAvailability';
+import React, { useState } from "react";
+import "../styles/FindRunnersPage.css";
+import users from "../data/users.json";
+import RunnerAvailability from "../components/RunnerAvailability";
 import {
   Expandable,
   ExpandableCard,
@@ -11,93 +11,114 @@ import {
   ExpandableTrigger,
   ExpandableContent,
 } from "../components/ui/RunnerExpandableCard";
-// import { Badge } from '@/components/ui/badge';
-import { Clock, MapPin, Users } from 'lucide-react';
+import { Clock, MapPin, Users } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 export default function FindRunnerPage() {
-  const [filters, setFilters] = useState({ preference: '', gender: '' });
   const [selectedUser, setSelectedUser] = useState(null);
+  const navigate = useNavigate();
 
-  const filteredUsers = users.filter(user => {
+
+  const location = useLocation();
+  const [filters, setFilters] = useState(() => ({
+    preference: location.state?.preference || "",
+    gender: location.state?.gender || "",
+    day: location.state?.day || "",
+    startTime: location.state?.startTime || "",
+    endTime: location.state?.endTime || "",
+  }));
+
+  const filteredUsers = users.filter((user) => {
     return (
-      (filters.preference === '' || user.preference === filters.preference) &&
-      (filters.gender === '' || user.gender === filters.gender)
+      (filters.preference === "" || user.preference === filters.preference) &&
+      (filters.gender === "" || user.gender === filters.gender)
     );
   });
 
   const handleSendRequest = (user, selected) => {
-    alert(`Request sent to ${user.name} for ${selected.day} at ${selected.time}`);
+    alert(
+      `Request sent to ${user.name} for ${selected.day} at ${selected.time}`
+    );
   };
-
   return (
-    <div className="flex h-full">
-      <FilterSidebar filters={filters} setFilters={setFilters} />
+    <div className="find-runner-container">
 
-      <div className="w-3/4 p-4 overflow-y-auto">
-        <h1 className="text-2xl font-bold mb-4">Matched Runners</h1>
-        <div className="flex flex-col gap-6">
-          {filteredUsers.map(user => (
-            <Expandable key={user.id} expandDirection="vertical" expandBehavior="replace">
-              <ExpandableTrigger>
-                <ExpandableCard className="w-full">
-                  <ExpandableCardHeader>
-                    <div className="flex justify-between items-start w-full">
-                      <div>
-                        <h3 className="font-semibold text-xl text-gray-800 dark:text-white">
-                          {user.name}
-                        </h3>
-                        <span className="inline-block bg-gray-100 text-gray-700 px-2 py-1 text-xs rounded">
-  {user.preference}
-</span>
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        {user.distance} km away
-                      </div>
+      {/* Filter Preview */}
+      <div
+  className="filter-preview-bubble"
+  onClick={() => navigate("/landing/set-filter", { state: filters })}
+>
+  {filters.preference || "Any"} | {filters.gender || "Any"} | {filters.day || "Any Day"}{" "}
+  {filters.startTime && filters.endTime
+    ? `| ${filters.startTime}-${filters.endTime}`
+    : ""}
+</div>
+
+
+      <h1 className="find-runner-title">Matched Runners</h1>
+
+      <div className="flex flex-col gap-4">
+        {filteredUsers.map((user) => (
+          <Expandable
+            key={user.id}
+            expandDirection="vertical"
+            expandBehavior="replace"
+          >
+            <ExpandableTrigger>
+              <ExpandableCard className="runner-card">
+                <ExpandableCardHeader>
+                  <div className="flex justify-between items-start w-full">
+                    <h3>{user.name}</h3>
+                    <span>{user.preference}</span>
+                    <div className="text-xs mt-1">{user.distance} km away</div>
+                  </div>
+                </ExpandableCardHeader>
+
+                <ExpandableCardContent>
+                  <div className="flex flex-col gap-1">
+                    <div className="flex items-center text-sm">
+                      <Clock className="w-4 h-4 mr-2" />
+                      {user.availability[0].day} {user.availability[0].start}–
+                      {user.availability[0].end}
                     </div>
-                  </ExpandableCardHeader>
-
-                  <ExpandableCardContent>
-                    <div className="flex flex-col text-sm text-gray-700 gap-1">
-                      <div className="flex items-center">
-                        <Clock className="w-4 h-4 mr-2" />
-                        {user.availability[0].day} {user.availability[0].start}–{user.availability[0].end}
+                    <ExpandableContent preset="slide-up">
+                      <div className="flex items-center text-sm">
+                        <MapPin className="w-4 h-4 mr-2" />
+                        Distance: {user.distance} km
                       </div>
-                      <ExpandableContent preset="slide-up">
-                        <div className="flex items-center">
-                          <MapPin className="w-4 h-4 mr-2" />
-                          Distance: {user.distance} km
-                        </div>
-                        <div className="flex items-center">
-                          <Users className="w-4 h-4 mr-2" />
-                          Gender: {user.gender || 'Not specified'}
-                        </div>
-                      </ExpandableContent>
-                    </div>
-                  </ExpandableCardContent>
+                      <div className="flex items-center text-sm">
+                        <Users className="w-4 h-4 mr-2" />
+                        Gender: {user.gender || "Not specified"}
+                      </div>
+                    </ExpandableContent>
+                  </div>
+                </ExpandableCardContent>
 
-                  <ExpandableCardFooter>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedUser(user);
-                      }}
-                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    >
-                      Schedule a run
-                    </button>
-                  </ExpandableCardFooter>
-                </ExpandableCard>
-              </ExpandableTrigger>
-            </Expandable>
-          ))}
-        </div>
-
-        {selectedUser && (
-          <div className="mt-8 border-t pt-4">
-            <RunnerAvailability user={selectedUser} onSendRequest={handleSendRequest} />
-          </div>
-        )}
+                <ExpandableCardFooter>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedUser(user);
+                    }}
+                  >
+                    Schedule a run
+                  </button>
+                </ExpandableCardFooter>
+              </ExpandableCard>
+            </ExpandableTrigger>
+          </Expandable>
+        ))}
       </div>
+
+      {selectedUser && (
+        <div className="mt-8 border-t pt-4">
+          <RunnerAvailability
+            user={selectedUser}
+            onSendRequest={handleSendRequest}
+          />
+        </div>
+      )}
     </div>
   );
 }
