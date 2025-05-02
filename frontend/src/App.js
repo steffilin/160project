@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import MatchingFriends from './pages/matchingFriends';
-
+import ViewProfile from './pages/ViewProfile';
 
 import FriendsPage, { FriendsLayout } from './pages/FriendsPage';
 
@@ -25,12 +25,39 @@ const dummyUserInfo = {
 };
 
 function App() {
+  const dummyProfile = {
+    displayName: 'Jane Smith',
+    gender: 'Female',
+    age: 29,
+    location: 'Berkeley, CA',
+    paceMinutes: 8,
+    paceSeconds: 30,
+    goal: 'Half Marathon',
+    bio: 'Love early morning trail runs!',
+    availability: {
+      Monday: ['Morning', 'Evening'],
+      Tuesday: ['Afternoon'],
+      Wednesday: [],
+      Thursday: ['Morning'],
+      Friday: ['Evening'],
+      Saturday: ['Morning', 'Afternoon'],
+      Sunday: [],
+    },
+    paceTolerance: '±30 sec',
+    preferredRunType: 'Medium (3 – 6 miles)',
+    preferredGender: 'No preference',
+    preferredMinAge: 25,
+    preferredMaxAge: 40,
+  };
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/view-profile" element={<ViewProfile profile={dummyProfile} />} />
+
         <Route path="/match" element={<MatchingFriends currentUserInfo={dummyUserInfo} />} />
 
         <Route path="/landing" element={<LandingLayout />}>
