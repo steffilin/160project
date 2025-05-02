@@ -7,10 +7,13 @@ import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import MatchingFriends from './pages/matchingFriends';
 
+
+import FriendsPage, { FriendsLayout } from './pages/FriendsPage';
+
 import LandingLayout from './pages/LandingLayout';
 import LandingHome from './pages/LandingHome';
 import FindRunnersPage from './pages/FindRunnersPage';
-import { FriendsPage, FriendsLayout } from './pages/FriendsPage';
+
 import CreateRunPage from './pages/CreateRunPage';
 import Chat from './pages/Chat';
 

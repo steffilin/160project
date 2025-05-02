@@ -74,4 +74,5 @@ function FriendsLayout() {
   );
 }
 
-export { FriendsLayout, FriendsPage };
+export { FriendsLayout };
+export default FriendsPage;
