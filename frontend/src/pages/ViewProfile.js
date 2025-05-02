@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import './ViewProfile.css';
+import '../styles/ViewProfile.css';
 
 function ViewProfile({ profile }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -271,5 +271,4 @@ function ViewProfile({ profile }) {
         </div>
     );
 }
-
 export default ViewProfile;
