@@ -49,13 +49,24 @@ function FriendCard({ user, isSelected, onToggle }) {
   
 function ChooseRunnersPage() {
 
+    const [selectedFriends, setSelectedFriends] = useState([]);
 
     const dummyFriendList = useFriendList();
+
+    const toggleFriend = (name) => {
+        setSelectedFriends(prev =>
+            prev.includes(name)
+            ? prev.filter(n => n !== name)
+            : [...prev, name]
+        );
+    };
 
     return (
         <div className="friend-list-container">
             {dummyFriendList.map((friend, index) => (
-                <FriendCard key={index} user={friend} />
+                <FriendCard key={index} user={friend} 
+                isSelected={selectedFriends.includes(friend.name)}
+                onToggle={toggleFriend}/>
             ))}
         </div>
       );
