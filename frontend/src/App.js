@@ -18,6 +18,7 @@ import FindRunnersPage from './pages/FindRunnersPage';
 
 import CreateRunPage from './pages/CreateRunPage';
 import ChooseRunnersPage from './pages/ChooseRunnersPage';
+import SentInvitePage from './pages/SentInvitePage';
 import Chat from './pages/Chat';
 
 const dummyUserInfo = {
@@ -69,6 +70,7 @@ function App() {
           <Route path="find-runners" element={<FindRunnersPage />} />
           <Route path="create-run" element={<CreateRunPage />} />
           <Route path="chooserunners" element={<ChooseRunnersPage />} />
+          <Route path="sent-invite" element={<SentInvitePage />} />
           <Route path="friends" element={<FriendsLayout />} >
             <Route path="" element={<FriendsPage />} />
             <Route path="chat" element={<Chat />} />

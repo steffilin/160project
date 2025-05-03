@@ -49,6 +49,7 @@ function FriendCard({ user, isSelected, onToggle }) {
   
 function ChooseRunnersPage() {
 
+    const navigate = useNavigate();
     const [selectedFriends, setSelectedFriends] = useState([]);
 
     const dummyFriendList = useFriendList();
@@ -61,14 +62,31 @@ function ChooseRunnersPage() {
         );
     };
 
+    const handleClick = () => {
+        navigate('/landing/sent-invite', {
+            // state: {
+            //   eventName,
+            //   location,
+            //   time,
+            // },
+        });
+    }
+
     return (
-        <div className="friend-list-container">
-            {dummyFriendList.map((friend, index) => (
-                <FriendCard key={index} user={friend} 
-                isSelected={selectedFriends.includes(friend.name)}
-                onToggle={toggleFriend}/>
-            ))}
+        <div>
+            <div className="friend-list-container">
+                {dummyFriendList.map((friend, index) => (
+                    <FriendCard key={index} user={friend} 
+                    isSelected={selectedFriends.includes(friend.name)}
+                    onToggle={toggleFriend}/>
+                ))}
+            </div>
+
+            <button onClick={handleClick}>Send Invite</button>
         </div>
+        
+
+        
       );
 }
 
