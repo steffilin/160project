@@ -1,0 +1,106 @@
+.friend-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.friend-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background-color: #eef6ff;
+  border: 1px solid #d6eaff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.friend-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.friend-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.avatar-container {
+  position: relative;
+}
+
+.status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.status-dot.online {
+  background-color: #34c759;
+}
+
+.status-dot.offline {
+  background-color: #ccc;
+}
+
+.friend-card-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.friend-card-info .name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #222;
+}
+
+.friend-card-info .location {
+  font-size: 13px;
+  color: #777;
+}
+
+.friend-card-info.right {
+  text-align: right;
+  gap: 4px;
+}
+
+.friend-card-info.right .pace {
+  font-weight: 500;
+}
+
+.friend-card-info.right .runs {
+  color: #666;
+}
+
+.chat-icon {
+  font-size: 18px;
+  margin-top: 8px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.chat-icon:hover {
+  color: #0066ff;
+}
+
+.friends-page-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 30px 0 12px 0;
+  padding-left: 6px;
+  color: #333;
+  border-left: 4px solid #0066ff;
+}
+
