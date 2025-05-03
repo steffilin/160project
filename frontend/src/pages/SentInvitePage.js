@@ -9,9 +9,14 @@ import { useFriendList } from '../FriendContext';
 
 
 function SentInvitePage() {
+
+    const location = useLocation();
+    const { eventName, runLocation, time } = location.state || {};
+
+
     return (
         <div>
-            <p>Your invite has been sent to the running party!</p>
+            <p>Your {time} invite for {eventName} at {runLocation} has been sent to the running party!</p>
         </div>
     )
 }

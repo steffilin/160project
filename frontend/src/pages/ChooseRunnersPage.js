@@ -49,6 +49,9 @@ function FriendCard({ user, isSelected, onToggle }) {
   
 function ChooseRunnersPage() {
 
+    const location = useLocation();
+    const { eventName, location: runLocation, time } = location.state || {};
+
     const navigate = useNavigate();
     const [selectedFriends, setSelectedFriends] = useState([]);
 
@@ -64,11 +67,11 @@ function ChooseRunnersPage() {
 
     const handleClick = () => {
         navigate('/landing/sent-invite', {
-            // state: {
-            //   eventName,
-            //   location,
-            //   time,
-            // },
+            state: {
+              eventName,
+              runLocation,
+              time,
+            },
         });
     }
 
