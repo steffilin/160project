@@ -13,7 +13,7 @@ function FriendCard({ user, isSelected, onToggle }) {
     const navigate = useNavigate();
   
     const handleChatClick = (e) => {
-      e.stopPropagation(); // 阻止冒泡，避免触发整个卡片点击
+      e.stopPropagation(); 
       navigate('chat', { state: { user } });
     };
   
