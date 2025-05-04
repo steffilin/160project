@@ -87,69 +87,56 @@
     flex: 1;
   }
   
-  .map-container {
+/* src/styles/ScheduleRunPage.css */
+.map-container {
+    position: relative;
     margin-bottom: 15px;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    border: 1px solid #ddd;
-    height: 180px;
-  }
-  
-  .mock-map {
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  .map-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  
-  .map-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #e9ecef;
-    background-image: linear-gradient(#e9ecef 1px, transparent 1px), 
-                      linear-gradient(90deg, #e9ecef 1px, transparent 1px);
-    background-size: 20px 20px;
-    background-position: center;
-    opacity: 0.5;
+    border: 1px solid #e0e0e0;
+    height: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
   
   .map-instruction {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 12px;
     position: absolute;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 2;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #555;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    z-index: 5;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
   }
   
-  .map-marker {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #dc3545;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px solid white;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-    z-index: 1;
+  .map-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #f1f3f5;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .map-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #fff3f3;
+    font-size: 14px;
+    color: #d63031;
+    padding: 0 20px;
+    text-align: center;
   }
   
   .message-section textarea {
@@ -169,7 +156,7 @@
     margin-top: 25px;
     margin-bottom: 20px;
   }
-    
+  
   .cancel-button {
     flex: 1;
     padding: 12px 0;
@@ -186,8 +173,8 @@
     background-color: #e9ecef;
   }
   
-  .send-invitation-button {
-    flex: 1;
+  .send-button {
+    flex: 2;
     padding: 12px 0;
     background-color: #0066ff;
     color: white;
@@ -198,6 +185,6 @@
     cursor: pointer;
   }
   
-  .send-invitation-button:hover {
+  .send-button:hover {
     background-color: #0055d4;
   }

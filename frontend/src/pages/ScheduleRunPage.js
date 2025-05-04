@@ -1,10 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import "../styles/ScheduleRunPage.css";
+
+// Map container styles
+const mapContainerStyle = {
+  width: "100%",
+  height: "100%",
+  borderRadius: "8px",
+};
+
+// Berkeley center coordinates
+const center = {
+  lat: 37.8715,
+  lng: -122.273,
+};
+
+// Map options
+const options = {
+  disableDefaultUI: true,
+  zoomControl: true,
+  streetViewControl: false,
+  mapTypeControl: false,
+};
 
 function ScheduleRunPage() {
   const navigate = useNavigate();
   const location = useLocation();
+  const mapRef = useRef();
 
   // Default runner information
   const defaultRunner = {
@@ -23,11 +46,35 @@ function ScheduleRunPage() {
   const [startTime, setStartTime] = useState("08:00");
   const [endTime, setEndTime] = useState("09:00");
   const [meetLocation, setMeetLocation] = useState("");
-  const [mapPosition, setMapPosition] = useState({
-    lat: 37.8715,
-    lng: -122.273,
-  }); // Default to Berkeley
+  const [mapPosition, setMapPosition] = useState(center);
+
   const [message, setMessage] = useState("");
+
+  // Load Google Maps script
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: "AIzaSyB0OuVczmVMrYI_okLKZQJHi1AbbdZJ_4k", // Replace with your actual API key
+    libraries: ["places"],
+  });
+
+  // Store map instance when it loads
+  const onMapLoad = useCallback((map) => {
+    mapRef.current = map;
+  }, []);
+
+  // Handle map click to set marker and location
+  const handleMapClick = useCallback((event) => {
+    const newPosition = {
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng(),
+    };
+    setMapPosition(newPosition);
+
+    // Reverse geocode to get address (in a real app)
+    // For now, just set coordinates as text
+    setMeetLocation(
+      `Lat: ${newPosition.lat.toFixed(6)}, Lng: ${newPosition.lng.toFixed(6)}`
+    );
+  }, []);
 
   useEffect(() => {
     // Set tomorrow's date as default
@@ -54,11 +101,6 @@ function ScheduleRunPage() {
     timeOptions.push(`${hour}:00`, `${hour}:30`);
   }
 
-  const handleMapClick = (event) => {
-    // Simplified map interaction - in a real app would use actual coordinates
-    setMeetLocation("Selected location on map");
-  };
-
   const handleSendInvitation = () => {
     // Create invitation object with all the details
     const invitation = {
@@ -69,6 +111,7 @@ function ScheduleRunPage() {
       startTime,
       endTime,
       meetLocation,
+      coordinates: mapPosition,
       message,
     };
 
@@ -83,6 +126,34 @@ function ScheduleRunPage() {
   const handleCancel = () => {
     // Navigate back to find-runners page
     navigate("/landing/find-runners");
+  };
+
+  // Render loading, error, or map
+  const renderMap = () => {
+    if (loadError) {
+      return (
+        <div className="map-error">
+          Error loading maps. Please check your internet connection.
+        </div>
+      );
+    }
+
+    if (!isLoaded) {
+      return <div className="map-loading">Loading map...</div>;
+    }
+
+    return (
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={14}
+        center={mapPosition}
+        options={options}
+        onClick={handleMapClick}
+        onLoad={onMapLoad}
+      >
+        <Marker position={mapPosition} />
+      </GoogleMap>
+    );
   };
 
   return (
@@ -172,15 +243,9 @@ function ScheduleRunPage() {
         <h3>Where do you want to meet?</h3>
 
         <div className="map-container">
-          {/* Mock map with placeholder image to ensure it always displays */}
-          <div className="mock-map" onClick={handleMapClick}>
-            <div className="map-placeholder">
-              <div className="map-background"></div>
-              <div className="map-instruction">
-                Tap to select a meeting location
-              </div>
-              <div className="map-marker"></div>
-            </div>
+          {renderMap()}
+          <div className="map-instruction">
+            Tap on the map to select a meeting location
           </div>
         </div>
 
