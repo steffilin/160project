@@ -30,7 +30,8 @@ function RegisterPage() {
 
     console.log('Register info:', form);
     
-    navigate('/profile');
+    navigate('/profile', { state: form });
+
   };
 
   return (

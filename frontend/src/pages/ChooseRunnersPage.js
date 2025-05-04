@@ -2,24 +2,97 @@
 import React, { createElement, useState } from 'react';
 // import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import '../styles/FriendList.css';
+import { useNavigate } from 'react-router-dom';
+import { FaCommentDots } from 'react-icons/fa';
+import { useFriendList } from '../FriendContext';
 
+
+  
+function FriendCard({ user, isSelected, onToggle }) {
+    const navigate = useNavigate();
+  
+    const handleChatClick = (e) => {
+      e.stopPropagation(); // 阻止冒泡，避免触发整个卡片点击
+      navigate('chat', { state: { user } });
+    };
+  
+    return (
+      <div className="friend-card">
+        <div className="checkbox">
+            <input
+            type="checkbox"
+            checked={isSelected}
+            onChange={() => onToggle(user.name)}
+            />
+        </div>
+        <div className="friend-left">
+          <div className="avatar-container">
+            <div className={`status-dot ${user.online ? 'online' : 'offline'}`}></div>
+            <img src="/user.png" alt="avatar" className="friend-avatar" />
+          </div>
+          <div className="friend-card-info">
+            <div className="name">{user.name}</div>
+            <div className="location">{user.location}</div>
+          </div>
+        </div>
+  
+        <div className="friend-card-info right">
+          <div className="pace">Pace: {user.paceMinutes}:{user.paceSeconds}</div>
+          <div className="runs"># Runs: {user.runCount}</div>
+          <FaCommentDots className="chat-icon" onClick={handleChatClick} />
+        </div>
+      </div>
+    );
+  }
+
+  
 function ChooseRunnersPage() {
 
+    const location = useLocation();
+    const { eventName, location: runLocation, time } = location.state || {};
 
+    const navigate = useNavigate();
+    const [selectedFriends, setSelectedFriends] = useState([]);
+
+    const dummyFriendList = useFriendList();
+
+    const toggleFriend = (name) => {
+        setSelectedFriends(prev =>
+            prev.includes(name)
+            ? prev.filter(n => n !== name)
+            : [...prev, name]
+        );
+    };
+
+    const handleClick = () => {
+        navigate('/landing/sent-invite', {
+            state: {
+              eventName,
+              runLocation,
+              time,
+            },
+        });
+    }
 
     return (
         <div>
-          {/* <h2>Find Runners</h2>
-          <h4>Event Name</h4>
-          <input id="event-name" placeholder='Event Name' value={eventName} onChange={(e) => setEventName(e.target.value)}></input>
-          <h4>Location</h4>
-          <input id="location" placeholder='Location' value={location} onChange={(e) => setLocation(e.target.value)}></input>
-          <h4>Time</h4>
-          <input id="time" placeholder='Time' value={time} onChange={(e) => setTime(e.target.value)}></input>
-    
-          <button id="btn-select-runner" onClick={handleClick}>Select Runners</button> */}
+            <div className="friend-list-container">
+                {dummyFriendList.map((friend, index) => (
+                    <FriendCard key={index} user={friend} 
+                    isSelected={selectedFriends.includes(friend.name)}
+                    onToggle={toggleFriend}/>
+                ))}
+            </div>
+
+            <button onClick={handleClick}>Send Invite</button>
         </div>
+        
+
+        
       );
 }
 
 export default ChooseRunnersPage;
+
+

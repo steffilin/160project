@@ -38,7 +38,7 @@ function LandingLayout() {
         </div>
         {menuOpen && (
           <div className="dropdown-menu">
-            <div onClick={() => navigate('/profile')}>View Profile</div>
+            <div onClick={() => navigate('/view-profile')}>View Profile</div>
             <div onClick={handleLogout}>Logout</div>
           </div>
         )}
