@@ -23,6 +23,13 @@ import SentInvitePage from './pages/SentInvitePage';
 import Chat from './pages/Chat';
 import SetFilterPage from './pages/SetFilterPage';
 
+const dummyUserInfo = {
+  Personality: 'social',
+  runningspeed: '8:30 min/mile',
+  avaiable_time_shot: 'Tuesday 7–9am',
+  Location: 'UC Berkeley campus',
+};
+
 function App() {
   const dummyProfile = {
     displayName: 'Jane Smith',
@@ -66,9 +73,10 @@ function App() {
           <Route path="create-run" element={<CreateRunPage />} />
           <Route path="chooserunners" element={<ChooseRunnersPage />} />
           <Route path="sent-invite" element={<SentInvitePage />} />
+          <Route path="set-filter" element={<SetFilterPage />} />
           <Route path="friends" element={<FriendsLayout />} >
             <Route path="" element={<FriendsPage />} />
-          <Route path="set-filter" element={<SetFilterPage />} />
+          
             <Route path="chat" element={<Chat />} />
           </Route>
         </Route>
