@@ -1,168 +1,226 @@
+/* Base Profile Container */
 .profile-container {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
-    font-family: sans-serif;
-  }
-  
-  /* HEADER CARD */
-  .profile-header-card {
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-  
-  .header-main h2 {
-    margin: 0;
-    font-size: 2rem;
-    color: #333;
-  }
-  
-  .header-sub {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    font-size: 1rem;
-    color: #555;
-    margin-top: 5px;
-  }
-  
-  .location-text {
-    margin-top: 8px;
-    font-size: 0.9rem;
-    color: #888;
-  }
-  
-  /* SECTION CARDS */
-  .section-card {
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  
-  .section-header {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
-    color: #333;
-  }
-  
-  .section-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .profile-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 20px;
-  }
-  
-  .availability-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 20px;
-  }
-  
-  .profile-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
-  }
-  
-  .bio-text {
-    margin: 0;
-    white-space: pre-wrap;
-    color: #444;
-    line-height: 1.5;
-  }
-  
-  button {
-    margin: 20px auto 0;
-    display: block;
-    padding: 10px 15px;
-    background: #007bff;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background: #0056b3;
-  }
-  .profile-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .profile-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 20px;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .profile-grid > div {
-    padding: 10px;
-    border-right: 1px solid #eee;
-  }
-  
-  .profile-grid > div:nth-child(2n) {
-    border-right: none;
-  }
-  
-  /* .profile-item:last-child {
-    border-bottom: none;
-  } */
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .calendar-header {
-    background: #f5f5f5;
-    font-weight: bold;
-    padding: 8px 0;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .calendar-row {
-    display: contents; /* allows inner divs to follow grid columns */
-  }
-  
-  .calendar-cell {
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-  }
-  
-  .calendar-cell:last-child {
-    border-right: none;
-  }
-  
-  .calendar-day {
-    font-weight: bold;
-    background: #f9f9f9;
-    border-right: 1px solid #ddd;
-  }
-  
-  .available {
-    background-color: #c6f6d5; /* soft green */
-  }
-  
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 15px 80px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #333;
+}
+
+/* Profile Header */
+.profile-header {
+  text-align: center;
+  padding: 15px 10px;
+  margin-bottom: 15px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.profile-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.profile-meta {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.profile-location {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Profile Sections */
+.profile-section {
+  margin-bottom: 15px;
+  padding: 12px 15px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.profile-section h2 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Running Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 500;
+  color: #555;
+}
+
+.value {
+  color: #333;
+}
+
+/* Bio Section */
+.bio {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #444;
+}
+
+/* Availability Calendar */
+.calendar {
+  display: grid;
+  grid-template-columns: 70px repeat(4, 1fr);
+  font-size: 12px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.time-header {
+  background-color: #f7f7f7;
+  padding: 6px 2px;
+  text-align: center;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.day-label {
+  background-color: #f7f7f7;
+  padding: 8px 5px;
+  text-align: left;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.time-slot {
+  padding: 8px 0;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.time-slot.available {
+  background-color: #c6f6d5;
+}
+
+.time-slot.editable {
+  cursor: pointer;
+}
+
+.time-slot.editable:hover {
+  background-color: #e2f8ea;
+}
+
+/* Match Preferences */
+.match-preferences {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preference-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.preference-item:last-child {
+  border-bottom: none;
+}
+
+/* Edit Mode Styles */
+.edit-name {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.edit-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.edit-row input, .edit-row select {
+  flex: 1;
+}
+
+.edit-pace {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.edit-pace input {
+  width: 40px;
+}
+
+.age-range {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.age-range input {
+  width: 40px;
+}
+
+/* Form Elements */
+input, select, textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Edit Button */
+.edit-button {
+  display: block;
+  width: 100%;
+  margin: 20px 0 0;
+  padding: 12px;
+  background-color: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.edit-button:hover {
+  background-color: #0055d4;
+}

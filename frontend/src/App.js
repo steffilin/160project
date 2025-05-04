@@ -26,7 +26,7 @@ import SetFilterPage from './pages/SetFilterPage';
 const dummyUserInfo = {
   Personality: 'social',
   runningspeed: '8:30 min/mile',
-  avaiable_time_shot: 'Tuesday 7–9am',
+  avaiable_time_shot: 'Tuesday 7--9am',
   Location: 'UC Berkeley campus',
 };
 
@@ -50,7 +50,7 @@ function App() {
       Sunday: [],
     },
     paceTolerance: '±30 sec',
-    preferredRunType: 'Medium (3 – 6 miles)',
+    preferredRunType: 'Medium (3 -- 6 miles)',
     preferredGender: 'No preference',
     preferredMinAge: 25,
     preferredMaxAge: 40,
@@ -63,8 +63,6 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/view-profile" element={<ViewProfile profile={dummyProfile} />} />
-
         <Route path="/match" element={<MatchingFriends currentUserInfo={dummyUserInfo} />} />
 
         <Route path="/landing" element={<LandingLayout />}>
@@ -74,16 +72,15 @@ function App() {
           <Route path="chooserunners" element={<ChooseRunnersPage />} />
           <Route path="sent-invite" element={<SentInvitePage />} />
           <Route path="set-filter" element={<SetFilterPage />} />
+          <Route path="profile" element={<ViewProfile profile={dummyProfile} />} />
           <Route path="friends" element={<FriendsLayout />} >
             <Route path="" element={<FriendsPage />} />
-          
             <Route path="chat" element={<Chat />} />
           </Route>
         </Route>
       </Routes>
     </Router>
     </FriendProvider>
-    
   );
 }
 

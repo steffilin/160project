@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/LandingLayout.css';
@@ -6,7 +6,6 @@ import '../styles/LandingLayout.css';
 function LandingLayout() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('home');
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const user = {
     name: 'Jane',
@@ -15,56 +14,96 @@ function LandingLayout() {
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    setMenuOpen(false);
     if (tab === 'home') {
       navigate('/landing');
+    } else if (tab === 'profile') {
+      navigate('/landing/profile');
     } else {
       navigate(`/landing/${tab}`);
     }
   };
 
-  const handleLogout = () => {
-    localStorage.clear(); 
-    navigate('/');
-  };
-
+  useEffect(() => {
+    // Listen for tab change events from child components
+    const handleTabChange = (event) => {
+      if (event.detail) {
+        setActiveTab(event.detail);
+      }
+    };
+    
+    window.addEventListener('tabChange', handleTabChange);
+    
+    // Set initial active tab based on current route
+    const path = window.location.pathname;
+    if (path.includes('/landing/profile')) {
+      setActiveTab('profile');
+    } else if (path.includes('/landing/find-runners')) {
+      setActiveTab('find-runners');
+    } else if (path.includes('/landing/create-run')) {
+      setActiveTab('create-run');
+    } else if (path.includes('/landing/friends')) {
+      setActiveTab('friends');
+    } else if (path === '/landing') {
+      setActiveTab('home');
+    }
+    
+    return () => {
+      window.removeEventListener('tabChange', handleTabChange);
+    };
+  }, []);
+  
   return (
-    <div>
-      {/* Top Bar */}
+    <div className="app-container">
+      {/* Top Bar - Just the logo now */}
       <div className="top-bar">
-        <div className="profile-group" onClick={() => setMenuOpen(!menuOpen)}>
-          <img src={user.avatar} alt="User" />
-          <span className="username">{user.name}</span>
-        </div>
-        {menuOpen && (
-          <div className="dropdown-menu">
-            <div onClick={() => navigate('/view-profile')}>View Profile</div>
-            <div onClick={handleLogout}>Logout</div>
-          </div>
-        )}
         <h2>RunLink</h2>
       </div>
 
-      {/* Tabs */}
-      <div className="landing-container">
-        <div className="tabs">
-          <div className={`tab ${activeTab === 'home' ? 'active' : ''}`} onClick={() => handleTabClick('home')}>
-            Home
-          </div>
-          <div className={`tab ${activeTab === 'find-runners' ? 'active' : ''}`} onClick={() => handleTabClick('find-runners')}>
-            Find Runners
-          </div>
-          <div className={`tab ${activeTab === 'create-run' ? 'active' : ''}`} onClick={() => handleTabClick('create-run')}>
-            Create Run
-          </div>
-          <div className={`tab ${activeTab === 'friends' ? 'active' : ''}`} onClick={() => handleTabClick('friends')}>
-            Friends
+      {/* Scrollable Content Container */}
+      <div className="scrollable-content">
+        <div className="landing-container">
+          <div className="content-area">
+            <Outlet />
           </div>
         </div>
+      </div>
 
-        {/* Content */}
-        <div className="content-area">
-          <Outlet />
+      {/* Bottom Navigation Bar */}
+      <div className="bottom-nav">
+        <div 
+          className={`bottom-nav-item ${activeTab === 'home' ? 'active' : ''}`} 
+          onClick={() => handleTabClick('home')}
+        >
+          <div className="nav-icon home-icon"></div>
+          <span>Home</span>
+        </div>
+        <div 
+          className={`bottom-nav-item ${activeTab === 'find-runners' ? 'active' : ''}`} 
+          onClick={() => handleTabClick('find-runners')}
+        >
+          <div className="nav-icon find-runners-icon"></div>
+          <span>Find Runners</span>
+        </div>
+        <div 
+          className={`bottom-nav-item ${activeTab === 'create-run' ? 'active' : ''}`} 
+          onClick={() => handleTabClick('create-run')}
+        >
+          <div className="nav-icon create-run-icon"></div>
+          <span>Create Run</span>
+        </div>
+        <div 
+          className={`bottom-nav-item ${activeTab === 'friends' ? 'active' : ''}`} 
+          onClick={() => handleTabClick('friends')}
+        >
+          <div className="nav-icon friends-icon"></div>
+          <span>Friends</span>
+        </div>
+        <div 
+          className={`bottom-nav-item ${activeTab === 'profile' ? 'active' : ''}`} 
+          onClick={() => handleTabClick('profile')}
+        >
+          <img src={user.avatar} alt="User" className="profile-icon" />
+          <span>Profile</span>
         </div>
       </div>
     </div>

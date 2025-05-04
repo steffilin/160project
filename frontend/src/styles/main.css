@@ -8,6 +8,8 @@ body {
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
+  height: 100%;
+  overflow: hidden; /* Prevents double scrollbars */
 }
 
 /* Simulate phone width globally */
@@ -16,6 +18,9 @@ body {
   margin: 0 auto;
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
 }
 
 *,
