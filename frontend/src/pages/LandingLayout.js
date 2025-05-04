@@ -9,7 +9,7 @@ function LandingLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const user = {
-    name: 'Tong',
+    name: 'Jane',
     avatar: '/user.png',
   };
 

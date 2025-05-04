@@ -161,20 +161,33 @@ const ExpandableContent = React.forwardRef(({
   keepMounted = false,
   ...props
 }, ref) => {
-  const { isExpanded, transitionDuration, easeType } = useExpandable()
-  const [measureRef, { height: measuredHeight }] = useMeasure()
-  const animatedHeight = useMotionValue(0)
-  const smoothHeight = useSpring(animatedHeight, springConfig)
-
+  const { isExpanded, transitionDuration, easeType } = useExpandable();
+  const [measureRef, { height: measuredHeight }] = useMeasure();
+  const animatedHeight = useMotionValue(0);
+  const smoothHeight = useSpring(animatedHeight, springConfig);
+  
+  // Add state to track if content has been measured
+  const [hasMeasured, setHasMeasured] = useState(false);
+  
   useEffect(() => {
-    if (isExpanded) {
-      animatedHeight.set(measuredHeight)
-    } else {
-      animatedHeight.set(0)
+    // Only update height after content has been measured
+    if (measuredHeight > 0) {
+      setHasMeasured(true);
     }
-  }, [isExpanded, measuredHeight, animatedHeight])
+    
+    if (isExpanded) {
+      // Force immediate height update on first expansion
+      if (!hasMeasured && measuredHeight > 0) {
+        animatedHeight.set(measuredHeight);
+      } else {
+        animatedHeight.set(measuredHeight);
+      }
+    } else {
+      animatedHeight.set(0);
+    }
+  }, [isExpanded, measuredHeight, animatedHeight, hasMeasured]);
 
-  const animationProps = getAnimationProps(preset, animateIn, animateOut)
+  const animationProps = getAnimationProps(preset, animateIn, animateOut);
 
   return (
     <motion.div
@@ -183,7 +196,7 @@ const ExpandableContent = React.forwardRef(({
       transition={{ duration: transitionDuration, ease: easeType }}
       {...props}
     >
-      <AnimatePresence initial={false}>
+      <AnimatePresence mode="sync" initial={false}>
         {(isExpanded || keepMounted) && (
           <motion.div
             ref={measureRef}
@@ -217,8 +230,8 @@ const ExpandableContent = React.forwardRef(({
         )}
       </AnimatePresence>
     </motion.div>
-  )
-})
+  );
+});
 
 const ExpandableCard = React.forwardRef(({
   children,
@@ -265,7 +278,7 @@ const ExpandableCard = React.forwardRef(({
       className={cn("cursor-pointer", className)}
       style={{
         width: expandDirection === "vertical" ? collapsedSize.width : smoothWidth,
-        height: isExpanded ? smoothHeight : "auto",
+        height: expandDirection === "horizontal" && isExpanded ? smoothHeight : "auto",
       }}
       transition={springConfig}
       onHoverStart={handleHover}

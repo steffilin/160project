@@ -18,7 +18,7 @@ export default function FindRunnerPage() {
   const navigate = useNavigate();
 
   const location = useLocation();
-  const [filters, setFilters] = useState(() => ({
+  const [filters] = useState(() => ({
     preference: location.state?.preference || "",
     gender: location.state?.gender || "",
     day: location.state?.day || "",
