@@ -29,6 +29,35 @@ export default function FindRunnerPage() {
   // Map to store which availability slot matched for each user
   const userMatchingSlots = new Map();
 
+  const handleScheduleRun = (user, slot) => {
+    // Format the runner data for the schedule page
+    const runnerData = {
+      id: user.id,
+      name: user.name,
+      gender: user.gender,
+      pace: user.pace + " min/km",
+      distance: user.distance + " km",
+      preferredRunType: user.preference,
+      goal: user.goal,
+      // Include the specific selected availability slot
+      availabilitySlot: {
+        day: slot.day,
+        startTime: slot.start,
+        endTime: slot.end
+      }
+    };
+    
+    // Navigate to schedule page with the runner data
+    navigate('/landing/schedule-run', {
+      state: { 
+        runner: runnerData,
+        day: slot.day,
+        startTime: slot.start,
+        endTime: slot.end
+      }
+    });
+  };
+
   const filteredUsers = users.filter((user) => {
     // First check basic filters (preference and gender)
     const basicFilterPass =
@@ -94,7 +123,7 @@ export default function FindRunnerPage() {
 
   return (
     <div className="find-runner-container">
-      <h1 className="text-center">Matched Runners</h1>
+      <h2 className="text-center">Matched Runners</h2>
 
       {/* Filter Preview */}
       <div
@@ -109,8 +138,6 @@ export default function FindRunnerPage() {
       </div>
 
       <div className="flex flex-col gap-10">
-        {" "}
-        {/* Increase gap from 6 to 10 */}
         {filteredUsers.map((user) => {
           // Get the matching slot or default to first slot if no specific match
           const matchingSlotIndex = userMatchingSlots.get(user.id) || 0;
@@ -171,6 +198,7 @@ export default function FindRunnerPage() {
                       onClick={(e) => {
                         e.stopPropagation();
                         setSelectedUser(user);
+                        handleScheduleRun(user, displaySlot);
                       }}
                     >
                       Schedule

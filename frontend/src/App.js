@@ -16,6 +16,7 @@ import FriendsPage, { FriendsLayout } from './pages/FriendsPage';
 import LandingLayout from './pages/LandingLayout';
 import LandingHome from './pages/LandingHome';
 import FindRunnersPage from './pages/FindRunnersPage';
+import ScheduleRunPage from './pages/ScheduleRunPage';
 
 import CreateRunPage from './pages/CreateRunPage';
 import ChooseRunnersPage from './pages/ChooseRunnersPage';
@@ -70,6 +71,7 @@ function App() {
           <Route path="find-runners" element={<FindRunnersPage />} />
           <Route path="create-run" element={<CreateRunPage />} />
           <Route path="chooserunners" element={<ChooseRunnersPage />} />
+          <Route path="schedule-run" element={<ScheduleRunPage />} />
           <Route path="sent-invite" element={<SentInvitePage />} />
           <Route path="set-filter" element={<SetFilterPage />} />
           <Route path="profile" element={<ViewProfile profile={dummyProfile} />} />
