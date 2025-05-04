@@ -1,0 +1,82 @@
+/* src/styles/RunHistoryPage.css */
+.run-history-container {
+    padding: 15px;
+}
+
+.no-history-message {
+    text-align: center;
+    color: #777;
+    margin-top: 40px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.history-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 15px;
+}
+
+.history-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.history-date {
+    font-weight: bold;
+    font-size: 0.95em;
+    color: #333;
+}
+
+.history-partner {
+    font-size: 0.85em;
+    color: #777;
+}
+
+.history-card-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
+    gap: 10px 15px; /* Row and column gap */
+    margin-bottom: 10px;
+}
+
+.history-stat {
+    text-align: center;
+}
+
+.history-stat .stat-label {
+    font-size: 0.75em;
+    color: #777;
+    display: block;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+
+.history-stat .stat-value {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #333;
+}
+
+.history-location {
+    font-size: 0.85em;
+    color: #888;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.button-view-details { /* Style if you add this button */
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    /* Add more styles */
+}

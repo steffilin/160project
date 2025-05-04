@@ -1,0 +1,272 @@
+/* src/styles/LandingHome.css */
+
+/* General Page Structure */
+.landing-home-container {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Increased gap between main sections */
+    max-width: 600px; /* Optional: Constrain width on larger screens */
+    margin: 0 auto; /* Center container */
+  }
+  
+  .welcome-message {
+    text-align: center;
+    /* Removed margin-bottom, using container gap now */
+    color: #333;
+    font-size: 1.4em;
+  }
+  
+  /* --- Notification Bar --- */
+  .notification-bar, .no-notification {
+    background-color: #e7f3ff; /* Light blue */
+    border: 1px solid #b3d7ff;
+    color: #004085; /* Dark blue */
+    padding: 12px 15px; /* Slightly more padding */
+    border-radius: 8px;
+    font-size: 0.9em;
+    text-align: center;
+    line-height: 1.4;
+  }
+  
+  .notification-bar strong {
+      font-weight: 600; /* Make partner name slightly bolder */
+  }
+  
+  .notification-bar a, .no-notification a {
+      color: #0056b3; /* Slightly darker blue for link */
+      font-weight: bold;
+      text-decoration: none;
+      margin-left: 5px; /* Space before the link */
+  }
+  .notification-bar a:hover, .no-notification a:hover {
+      text-decoration: underline;
+  }
+  
+  
+  /* --- Combined Run/Stats Row --- */
+  .run-stats-row {
+    display: flex;
+    align-items: stretch; /* Make items equal height */
+    gap: 15px; /* Space between Run button and Stats block */
+  }
+  
+  .run-button-block {
+    background-color: #0066ff; /* Blue */
+    color: white;
+    font-size: 2.2em; /* Adjusted RUN text size */
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    flex: 1; /* Takes up half the space */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+  .run-button-block:hover {
+      background-color: #0052cc; /* Darker blue on hover */
+  }
+  .run-button-block:active {
+      transform: scale(0.98); /* Slight shrink on click */
+  }
+  
+  /* --- FIX: Statistics Block Spacing --- */
+  .stats-block-condensed {
+    background-color: #f8f9fa; /* Light grey */
+    border-radius: 12px;
+    padding: 10px; /* Adjusted padding */
+    flex: 1; /* Takes up the other half */
+    display: flex; /* Make this a flex container */
+    justify-content: space-around; /* Space out items evenly */
+    align-items: center; /* Center items vertically */
+    gap: 10px; /* Explicit gap between items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stat-item-condensed {
+    text-align: center; /* Center text within the item */
+    flex-basis: 0; /* Allow items to shrink/grow equally */
+    flex-grow: 1;
+    padding: 5px; /* Padding inside each stat item */
+  }
+  
+  .stat-value-condensed {
+    display: block;
+    font-size: 1.7em; /* Slightly adjusted */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px; /* Increased space to label */
+    line-height: 1.1; /* Control line height */
+  }
+  
+  .stat-label-condensed {
+    display: block;
+    font-size: 0.7em; /* Adjusted label size */
+    color: #6c757d; /* Grey label color */
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-weight: 500; /* Slightly bolder label */
+  }
+  
+  /* --- Shared Card Styles --- */
+  .dashboard-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 15px 20px 20px 20px; /* Added bottom padding */
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      /* Removed margin-bottom, using container gap */
+  }
+  
+  .card-title {
+      font-size: 1.15em; /* Slightly larger title */
+      font-weight: 600; /* Bolder title */
+      color: #343a40; /* Darker grey */
+      margin: -15px -20px 15px -20px; /* Extend to edges */
+      padding: 12px 20px; /* Padding inside title area */
+      border-bottom: 1px solid #e9ecef; /* Separator */
+      background-color: #f8f9fa; /* Very light grey background for title */
+      border-radius: 12px 12px 0 0; /* Match card rounding */
+  }
+  
+  .card-content {
+      margin-bottom: 20px; /* Space before button */
+      display: flex;
+      flex-direction: column;
+      gap: 10px; /* Space between items in card content */
+  }
+  /* Remove margin for last element before button */
+  .card-content + .button-secondary {
+      margin-top: 0;
+  }
+  
+  
+  .button-secondary {
+      background-color: #6c757d; /* Grey */
+      color: white;
+      border: none;
+      padding: 9px 18px; /* Adjusted padding */
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9em;
+      display: block;
+      width: fit-content;
+      margin: 0 auto; /* Center the button */
+      text-align: center;
+      transition: background-color 0.2s ease;
+  }
+  
+  .button-secondary:hover {
+      background-color: #5a6268;
+  }
+  
+  /* --- Recent Activity Card Specifics --- */
+  .recent-run-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95em;
+    padding: 8px 0; /* Added vertical padding */
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .recent-run-item:last-child {
+      border-bottom: none;
+  }
+  
+  
+  .run-details {
+      font-weight: 500;
+      color: #333;
+  }
+  
+  .run-date {
+    color: #777;
+    font-size: 0.9em;
+  }
+  
+  /* --- ADDED: Scheduled Runs Section Styles --- */
+  .scheduled-runs-section {
+      /* Uses .dashboard-card styles */
+  }
+  
+  .scheduled-run-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px; /* Space between date/details/button */
+      padding: 12px 0; /* More padding within the item row */
+      border-bottom: 1px solid #e9ecef; /* Match card separator */
+      font-size: 0.95em;
+  }
+  .scheduled-run-item:last-child {
+      border-bottom: none; /* Remove border from last item */
+  }
+  
+  .run-item-datetime {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      flex-shrink: 0;
+      min-width: 75px; /* Slightly wider */
+      line-height: 1.3;
+  }
+  
+  .run-item-date {
+      font-weight: 600; /* Bolder date */
+      color: #343a40;
+      font-size: 1em; /* Ensure date is readable */
+  }
+  
+  .run-item-time {
+      color: #6c757d; /* Grey time */
+      font-size: 0.9em;
+  }
+  
+  .run-item-details {
+      flex-grow: 1;
+      text-align: left;
+      line-height: 1.4;
+      overflow: hidden; /* Prevent overflow issues */
+  }
+  
+  .run-item-location {
+      display: block;
+      color: #495057;
+      font-weight: 500; /* Slightly bolder location */
+      white-space: nowrap; /* Prevent wrapping */
+      overflow: hidden;
+      text-overflow: ellipsis; /* Add ... if too long */
+      margin-bottom: 3px; /* Space between location and partner */
+  }
+  
+  .run-item-partner {
+      color: #007bff; /* Standard blue */
+      font-size: 0.9em;
+      display: block; /* Ensure it's below location */
+       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+  .run-item-partner.solo {
+      color: #868e96; /* Lighter grey for solo */
+      font-style: italic;
+  }
+  
+  .button-icon {
+      background: none;
+      border: none;
+      color: #007bff;
+      font-size: 1.6em;
+      font-weight: bold; /* Make arrow bolder */
+      cursor: pointer;
+      padding: 0 5px;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: color 0.2s ease;
+  }
+  .button-icon:hover {
+      color: #0056b3; /* Darker blue on hover */
+  }

@@ -1,0 +1,94 @@
+/* src/styles/TrackRunPage.css */
+.track-run-container {
+    padding: 15px;
+}
+
+.live-stats-display {
+    display: flex;
+    /* Removed justify-content, gap handles spacing between */
+    gap: 15px; /* ADDED: Explicit space between stat items */
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    /* text-align: center; Moved to stat-item */
+}
+
+.stat-item {
+    flex: 1; /* Keep: Ensures items try to take equal space */
+    text-align: center; /* ADDED: Ensure text centers within its flex area */
+    /* Optional: Add a min-width if items collapse too much */
+    /* min-width: 80px; */ /* Example value, adjust if needed */
+}
+
+.stat-item .stat-value {
+    font-size: 1.8em; /* Consider reducing slightly if space is very tight */
+    font-weight: bold;
+    color: #0066ff;
+    display: block;
+    margin-bottom: 4px;
+    word-wrap: break-word; /* Prevent long numbers from breaking layout */
+    overflow-wrap: break-word; /* Modern equivalent */
+}
+
+.stat-item .stat-label {
+    font-size: 0.8em;
+    color: #777;
+    text-transform: uppercase;
+}
+
+/* ... (rest of the CSS remains the same) ... */
+
+.map-display-area {
+    position: relative;
+    min-height: 300px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #555;
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.controls button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 25px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    min-width: 120px;
+}
+
+.button-pause-resume.pause { background-color: #ffc107; color: #333; }
+.button-pause-resume.resume { background-color: #28a745; }
+.button-stop { background-color: #dc3545; }
+
+.debug-info {
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #aaa;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 4px;
+}

@@ -24,6 +24,11 @@ import SentInvitePage from './pages/SentInvitePage';
 import Chat from './pages/Chat';
 import SetFilterPage from './pages/SetFilterPage';
 
+// Import the new pages
+import ScheduledRunsPage from './pages/ScheduledRunsPage';
+import TrackRunPage from './pages/TrackRunPage';
+import RunHistoryPage from './pages/RunHistoryPage';
+
 const dummyUserInfo = {
   Personality: 'social',
   runningspeed: '8:30 min/mile',
@@ -75,6 +80,12 @@ function App() {
           <Route path="sent-invite" element={<SentInvitePage />} />
           <Route path="set-filter" element={<SetFilterPage />} />
           <Route path="profile" element={<ViewProfile profile={dummyProfile} />} />
+          
+          {/* --- New Routes --- */}
+          <Route path="scheduled-runs" element={<ScheduledRunsPage />} /> {/* View scheduled runs */}
+          <Route path="track-run" element={<TrackRunPage />} />        {/* Live run tracking page */}
+          <Route path="history" element={<RunHistoryPage />} />        {/* Completed run history */}
+
           <Route path="friends" element={<FriendsLayout />} >
             <Route path="" element={<FriendsPage />} />
             <Route path="chat" element={<Chat />} />
